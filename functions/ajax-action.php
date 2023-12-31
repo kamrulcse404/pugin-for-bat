@@ -108,34 +108,40 @@ function get_products_by_taxonomy()
         )
     ));
 
-  
+
+    // echo '<pre>' ; 
+    // print_r($posts) ;
 
 
     if ($posts->have_posts()) {
         while ($posts->have_posts()) {
 
-            
+
             $posts->the_post();
-            
-            
+            $product = wc_get_product(get_the_ID());
+
+
             // echo '<pre>' ; 
             // print_r(the_title()) ;
-            
-            ?>
 
-            <div>
+?>
+
+            <div style="margin-bottom: 50px;">
                 <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
                 <h3><?php the_title(); ?></h3>
+                <p>Description: <?php echo get_post_field('post_content', get_the_ID()); ?></p>
+                <p>Price: <?php echo $product->get_price_html(); ?></p>
+                <!-- <a href="">Email me this bat</a> -->
             </div>
 
 <?php
         }
+
+        wp_reset_postdata();
     }
 
 
-    wp_die(); 
-
-
+    wp_die();
 }
 
 add_action('wp_ajax_get_products_by_taxonomy', 'get_products_by_taxonomy');

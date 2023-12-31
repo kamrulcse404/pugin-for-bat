@@ -47,5 +47,14 @@ select.custom-size-option option {
 
 .search{
     display: flex;
-    gap: 30px;
+    gap: 50px;
+}
+
+.my_products .title{
+    font-family: 'Montserrat', sans-serif;
+    color: #222222;
+    font-size: 35px;
+    line-height: 44px;
+    font-weight: 400;
+    margin-bottom: 20px;
 }

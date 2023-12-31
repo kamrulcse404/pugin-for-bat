@@ -32,41 +32,10 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
     protected function register_controls()
     {
-
-        // title Tab Start
-
-        // $this->start_controls_section(
-        //     'section_10_title_tab',
-        //     [
-        //         'label' => esc_html__('Title', 'elementor-addon'),
-        //         'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-        //     ]
-        // );
-
-
-        // //  title 
-        // $this->add_control(
-        //     'section_10_title',
-        //     [
-        //         'label' => esc_html__('Title', 'elementor-addon'),
-        //         'type' => \Elementor\Controls_Manager::TEXTAREA,
-        //         'default' => esc_html__('looking for the best digital agency & marketing solution?', 'elementor-addon'),
-        //     ]
-        // );
-
-        // $this->end_controls_section();
-
-        // title Tab end
-
-
-
     }
 
     protected function render()
     {
-
-        // $settings = $this->get_settings_for_display();
-        // $section_10_title = $settings['section_10_title'];
 
 
 ?>
@@ -101,8 +70,15 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
                                 'hide_empty' => false,
                             ));
 
+                           
+
                             foreach ($terms as $term) {
-                                echo '<option value="' . esc_attr($term->term_id) . '">Size: ' . esc_html($term->name) . '</option>';
+
+                                $term_post_count = $term->count;
+
+
+
+                                echo '<option value="' . esc_attr($term->term_id) . '">Size: ' . esc_html($term->name) .' (' . $term_post_count . ')</option>';
                             }
                             ?>
 
@@ -134,7 +110,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
                             if (!empty($terms)) {
                                 foreach ($terms as $term) {
-                                    echo '<option value="' . esc_attr($term->term_id) . '">Weight: ' . esc_html($term->name) . '</option>';
+
+                                    $term_post_count = $term->count;
+
+
+                                    echo '<option value="' . esc_attr($term->term_id) . '">Weight: ' . esc_html($term->name) .' (' . $term_post_count . ')</option>';
                                 }
                             }
                             ?>
@@ -152,8 +132,8 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
             </select> -->
 
                         <select name="position" id="position" class="custom-size-option" style="margin-bottom: 18px;">
-                            <option value="" disabled selected><?php esc_html_e('Middle Position: Please Select', 'your-text-domain'); ?></option>
-                            <option value="reset"><?php esc_html_e('Reset Option', 'your-text-domain'); ?></option>
+                            <option value="" disabled selected><?php esc_html_e('Middle Position: Please Select', 'elementor-addon'); ?></option>
+                            <option value="reset"><?php esc_html_e('Reset Option', 'elementor-addon'); ?></option>
 
                             <?php
 
@@ -164,7 +144,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
 
                             foreach ($terms as $term) {
-                                echo '<option value="' . esc_attr($term->term_id) . '">' . esc_html__('Middle Position:', 'your-text-domain') . ' ' . esc_html($term->name) . '</option>';
+
+                                $term_post_count = $term->count;
+
+
+                                echo '<option value="' . esc_attr($term->term_id) . '">' . esc_html__('Middle Position:', 'elementor-addon') . ' ' . esc_html($term->name) .' (' . $term_post_count . ')</option>';
                             }
                             ?>
 
@@ -196,7 +180,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
                             if ($terms && !is_wp_error($terms)) {
 
                                 foreach ($terms as $term) {
-                                    echo '<option value="' . esc_attr($term->term_id) . '">Toe Shape: ' . esc_html($term->name) . '</option>';
+
+
+                                    $term_post_count = $term->count;
+
+                                    echo '<option value="' . esc_attr($term->term_id) . '">Toe Shape: ' . esc_html($term->name) .' (' . $term_post_count . ')</option>';
                                 }
                             }
                             ?>
@@ -227,7 +215,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
 
                             foreach ($terms as $term) {
-                                echo '<option value="' . $term->term_id . '">Scoop: ' . $term->name . '</option>';
+
+
+                                $term_post_count = $term->count;
+
+                                echo '<option value="' . $term->term_id . '">Scoop: ' . $term->name . ' (' . $term_post_count . ')</option>';
                             }
                             ?>
 
@@ -263,7 +255,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
 
                             foreach ($terms as $term) {
-                                echo '<option value="' . esc_attr($term->term_id) . '">Edge Shape: ' . esc_html($term->name) . '</option>';
+
+                                $term_post_count = $term->count;
+
+
+                                echo '<option value="' . esc_attr($term->term_id) . '">Edge Shape: ' . esc_html($term->name) .  ' (' . $term_post_count . ')</option>';
                             }
                             ?>
                         </select>
@@ -295,7 +291,11 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
                             ));
 
                             foreach ($terms as $term) {
-                                echo '<option value="' . esc_attr($term->term_id) . '">Toe Size: ' . esc_html($term->name) . '</option>';
+
+                                $term_post_count = $term->count;
+
+
+                                echo '<option value="' . esc_attr($term->term_id) . '">Toe Size: ' . esc_html($term->name) .  ' (' . $term_post_count . ')</option>';
                             }
                             ?>
 
@@ -310,7 +310,7 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
             <section>
                 <div class="my_products">
-                    <h1>Products</h1>
+                    <!-- <h1 class="title">Products</h1> -->
                 </div>
                 <div class="show_product">
 
