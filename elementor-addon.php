@@ -38,6 +38,12 @@ add_action('elementor/frontend/after_enqueue_styles', 'widget_styles');
 
 
 
+// add ajax action 
+$file_path = plugin_dir_path( __FILE__ ) . 'functions/ajax-action.php';
+if ( file_exists( $file_path ) ) {
+    require_once $file_path;
+}
+
 
 
 // the function for register wodgets 
