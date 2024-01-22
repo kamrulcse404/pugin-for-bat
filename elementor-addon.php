@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Elementor Addon By Tanvir
- * Description: Simple hello world widgets for Elementor.
+ * Description: Simple widgets for Elementor AZ BT.
  * Version:     1.0.0
  * Author:      Tanvirul Karim
  * Author URI:  www.bengalcoder.com
