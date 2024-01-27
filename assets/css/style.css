@@ -27,27 +27,20 @@ select.custom-size-option option {
 }
 
 
-/* .select-container{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    min-width: 250px;
-    height: 50px;
-}
-
-.select-box{
-    border: none;
-    appearance: none;
-    padding: 0 30px 0 15px;
-    width: 100%;
-    color: white;
-    background-color: #222222;
-    font-size: 20px;
-} */
 
 .search {
     display: flex;
     gap: 50px;
+}
+
+
+
+.show_product {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 20px; */
+    justify-content: space-around;
 }
 
 .my_products .title {
@@ -60,18 +53,88 @@ select.custom-size-option option {
 }
 
 
-.show_product img {
-    width: 200px;
-    height: auto;
+
+.my_single_product {
+    flex: 0 0 calc(32% - 40px);
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+    display: flex;
+    flex-direction: column; 
 }
 
+/* .my_single_product {
+    display: flex;
+    flex-direction: column; 
+} */
+
+
+
+.single_product_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+.single_product_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.single_product_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
 .show_product h3 {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 7px;
+    font-size: 18px;
+    margin-top: 5px;
 }
 
 .show_product p {
-    text-align: center;
-    font-size: 15px;
+    font-size: 14px;
+}
+
+
+.show_product {
+    display: flex;
+    gap: 20px;
+}
+
+
+
+.single_product_details {
+    padding: 5px;
+    height: 230px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+
+p#customBatBtn {
+    margin-top: auto; 
+}
+
+p#customBatBtn {
+    margin-bottom: 0px !important;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .my_single_product {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .my_single_product {
+        flex: 0 0 100%;
+    }
 }

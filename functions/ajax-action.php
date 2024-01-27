@@ -126,12 +126,16 @@ function get_products_by_taxonomy()
 
 ?>
 
-            <div style="margin-bottom: 50px;">
-                <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
-                <h3><?php the_title(); ?></h3>
-                <p>Description: <?php echo get_post_field('post_content', get_the_ID()); ?></p>
-                <p>Price: <?php echo $product->get_price_html(); ?></p>
-                <!-- <a href="">Email me this bat</a> -->
+            <div class="my_single_product" style="margin-bottom: 20px;">
+                <div class="single_product_img">
+                    <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
+                </div>
+                <div class="single_product_details">
+                    <h3><?php the_title(); ?></h3>
+                    <p>Description: <?php echo wp_trim_words(get_post_field('post_content', get_the_ID()), 15); ?></p>
+                    <p>Price: <?php echo $product->get_price_html(); ?></p>
+                    <p class="btn btn-primary" id="customBatBtn">Email for custom bat</p>
+                </div>
             </div>
 
 <?php
