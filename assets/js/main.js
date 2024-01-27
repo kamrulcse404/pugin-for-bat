@@ -31,6 +31,9 @@ jQuery(document).ready(function ($) {
       success: function (response) {
         // Handle the success response
         alert(response.data.message);
+
+        // Clear the form inputs
+        $("#customBatForm")[0].reset();
       },
       error: function (xhr, status, error) {
         // Handle errors
