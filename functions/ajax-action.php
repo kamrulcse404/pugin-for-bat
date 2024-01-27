@@ -134,15 +134,56 @@ function get_products_by_taxonomy()
                     <h3><?php the_title(); ?></h3>
                     <p>Description: <?php echo wp_trim_words(get_post_field('post_content', get_the_ID()), 15); ?></p>
                     <p>Price: <?php echo $product->get_price_html(); ?></p>
+
+                    <!-- <p><a href="mailto:someone@example.com" class="btn btn-primary" id="customBatBtn">Email for custom bat</a></p> -->
                     <p class="btn btn-primary" id="customBatBtn">Email for custom bat</p>
                 </div>
             </div>
 
-<?php
+    <?php
         }
 
         wp_reset_postdata();
     }
+
+    ?>
+
+
+    <!-- Example modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Custom Bat Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="customBatForm" ajax_url="<?php echo admin_url('admin-ajax.php'); ?>">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                    </form>
+                </div> <!-- Move the closing div tag for the form here -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" id="sendEmailBtn">Send Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<?php
 
 
     wp_die();
@@ -150,3 +191,57 @@ function get_products_by_taxonomy()
 
 add_action('wp_ajax_get_products_by_taxonomy', 'get_products_by_taxonomy');
 add_action('wp_ajax_nopriv_get_products_by_taxonomy', 'get_products_by_taxonomy');
+
+
+
+
+function get_custom_form_email()
+{
+    // Check if the necessary data is present in the POST request
+    if (isset($_POST['name']) && isset($_POST['email'])) {
+        // Sanitize the form input values
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
+
+        // Compose the email subject and message
+        $subject = 'Custom Bat Form Submission';
+        $body = "Name: $name\n";
+        $body .= "Email: $email\n";
+
+        // Email headers
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+
+        // Replace the following with your Mailtrap SMTP settings
+        $mailtrap_username = 'dd723a540dede2';
+        $mailtrap_password = '8eb1242054fc0a';
+        $mailtrap_host = 'sandbox.smtp.mailtrap.io';
+        $mailtrap_port = 2525; // You can try different ports: 25, 465, 587, or 2525
+
+        // Set up Mailtrap as the mailer
+        add_action('phpmailer_init', function ($phpmailer) use ($mailtrap_username, $mailtrap_password, $mailtrap_host, $mailtrap_port) {
+            $phpmailer->isSMTP();
+            $phpmailer->Host = $mailtrap_host;
+            $phpmailer->SMTPAuth = true;
+            $phpmailer->Port = $mailtrap_port;
+            $phpmailer->Username = $mailtrap_username;
+            $phpmailer->Password = $mailtrap_password;
+            $phpmailer->SMTPSecure = 'tls'; // Use 'tls' or 'ssl' based on your Mailtrap settings
+        });
+
+        $to = 'your_email@example.com'; // Replace with your actual email address
+
+        // Send the email
+        if (wp_mail($to, $subject, $body, $headers)) {
+            // Send JSON success response
+            wp_send_json_success(array('message' => 'Thank you for contacting us. We will get back to you soon'));
+        } else {
+            // Send JSON error response
+            wp_send_json_error(array('message' => 'Error sending email. Please try again later.'));
+        }
+    }
+
+    wp_die();
+}
+
+add_action('wp_ajax_get_custom_form_email', 'get_custom_form_email');
+add_action('wp_ajax_nopriv_get_custom_form_email', 'get_custom_form_email');
