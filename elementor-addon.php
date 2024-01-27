@@ -11,7 +11,7 @@
 
 
 // Custom CSS and
-function widget_styles()
+function widget_styles_custom_bat()
 {
 
 	// Enqueue jQuery
@@ -33,7 +33,7 @@ function widget_styles()
 	wp_enqueue_script('picchi-extension-script');
 }
 // Register Widget Styles
-add_action('elementor/frontend/after_enqueue_styles', 'widget_styles');
+add_action('elementor/frontend/after_enqueue_styles', 'widget_styles_custom_bat');
 
 
 
@@ -48,25 +48,24 @@ if ( file_exists( $file_path ) ) {
 
 // the function for register wodgets 
 
-function register_hello_world_widget($widgets_manager)
+function register_hello_world_widget_custom_bat($widgets_manager)
 {
 	require_once(__DIR__ . '/widgets/custom-bat-builder.php');
     
-	
 
 	
 	$widgets_manager->register(new \Custom_Bat_Builder());
     
 
 }
-add_action('elementor/widgets/register', 'register_hello_world_widget');
+add_action('elementor/widgets/register', 'register_hello_world_widget_custom_bat');
 
 
 
 
 
 // register new categories                
-function add_elementor_widget_categories($elements_manager)
+function add_elementor_widget_categories_custom_bat($elements_manager)
 {
 
 
@@ -86,7 +85,7 @@ function add_elementor_widget_categories($elements_manager)
 		]
 	);
 }
-add_action('elementor/elements/categories_registered', 'add_elementor_widget_categories');
+add_action('elementor/elements/categories_registered', 'add_elementor_widget_categories_custom_bat');
 
 
 
@@ -94,7 +93,7 @@ add_action('elementor/elements/categories_registered', 'add_elementor_widget_cat
 
 // create porducte taxonomy name size 
 // Register Custom Taxonomy size
-function custom_size_taxonomy() {
+function custom_size_taxonomy_custom_bat() {
     $labels = array(
         'name'                       => _x( 'Sizes', 'Taxonomy General Name', 'gota' ),
         'singular_name'              => _x( 'Size', 'Taxonomy Singular Name', 'gota' ),
@@ -128,12 +127,12 @@ function custom_size_taxonomy() {
     );
     register_taxonomy( 'size', array( 'product' ), $args );
 }
-add_action( 'init', 'custom_size_taxonomy', 0 );
+add_action( 'init', 'custom_size_taxonomy_custom_bat', 0 );
 
 
 
 // Register Custom Taxonomy weight
-function custom_taxonomy_weight() {
+function custom_taxonomy_weight_custom_bat() {
 
     $labels = array(
         'name'                       => _x( 'Weights', 'Taxonomy General Name', 'gota' ),
@@ -170,12 +169,12 @@ function custom_taxonomy_weight() {
     register_taxonomy( 'weight', array( 'product' ), $args );
 
 }
-add_action( 'init', 'custom_taxonomy_weight', 0 );
+add_action( 'init', 'custom_taxonomy_weight_custom_bat', 0 );
 
 
 
 // Register custom taxonomy position
-function custom_taxonomy_position() {
+function custom_taxonomy_position_custom_bat() {
     $labels = array(
         'name'                       => _x( 'Positions', 'Taxonomy General Name', 'gota' ),
         'singular_name'              => _x( 'Position', 'Taxonomy Singular Name', 'gota' ),
@@ -209,12 +208,12 @@ function custom_taxonomy_position() {
     );
     register_taxonomy( 'position', array( 'product' ), $args );
 }
-add_action( 'init', 'custom_taxonomy_position', 0 );
+add_action( 'init', 'custom_taxonomy_position_custom_bat', 0 );
 
 
 
 // Register Custom Taxonomy shape
-function custom_taxonomy_shape() {
+function custom_taxonomy_shape_custom_bat() {
 
     $labels = array(
         'name'                       => _x( 'Shapes', 'Taxonomy General Name', 'gota' ),
@@ -250,12 +249,12 @@ function custom_taxonomy_shape() {
     register_taxonomy( 'shape', array( 'product' ), $args );
 
 }
-add_action( 'init', 'custom_taxonomy_shape', 0 );
+add_action( 'init', 'custom_taxonomy_shape_custom_bat', 0 );
 
 
 
 // Register Custom Taxonomy scoop
-function custom_taxonomy_scoop() {
+function custom_taxonomy_scoop_custom_bat() {
 
     $labels = array(
         'name'                       => _x( 'Scoops', 'Taxonomy General Name', 'gota' ),
@@ -292,12 +291,12 @@ function custom_taxonomy_scoop() {
     register_taxonomy( 'scoop', array( 'product' ), $args );
 
 }
-add_action( 'init', 'custom_taxonomy_scoop', 0 );
+add_action( 'init', 'custom_taxonomy_scoop_custom_bat', 0 );
 
 
 
 // Register Custom Taxonomy edge shape
-function custom_taxonomy_edge_shape() {
+function custom_taxonomy_edge_shape_custom_bat() {
 
     $labels = array(
         'name'                       => _x( 'Edge Shapes', 'Taxonomy General Name', 'gota' ),
@@ -336,12 +335,12 @@ function custom_taxonomy_edge_shape() {
     register_taxonomy( 'edge_shape', array( 'product' ), $args );
 
 }
-add_action( 'init', 'custom_taxonomy_edge_shape', 0 );
+add_action( 'init', 'custom_taxonomy_edge_shape_custom_bat', 0 );
 
 
 
 // Register Custom Taxonomy
-function custom_taxonomy_toe_size() {
+function custom_taxonomy_toe_size_custom_bat() {
 
     $labels = array(
         'name'                       => _x( 'Toe Sizes', 'Taxonomy General Name', 'gota' ),
@@ -378,6 +377,6 @@ function custom_taxonomy_toe_size() {
     register_taxonomy( 'toe_size', array( 'product' ), $args );
 
 }
-add_action( 'init', 'custom_taxonomy_toe_size', 0 );
+add_action( 'init', 'custom_taxonomy_toe_size_custom_bat', 0 );
 
 
