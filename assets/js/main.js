@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
   $("#search-device-result").change(function () {
-    var ajaxUrl = "http://localhost/azbt/wp-admin/admin-ajax.php";
+    // var ajaxUrl = "http://localhost/azbt/wp-admin/admin-ajax.php";
+
+    var ajax_url = jQuery(this).attr("ajax_url");
 
     // alert(ajaxUrl);
 
@@ -16,7 +18,7 @@ jQuery(document).ready(function ($) {
 
     // alert(formdata);
 
-    $.ajax(ajaxUrl, {
+    $.ajax(ajax_url, {
       type: "POST",
       data: formdata,
       processData: false,

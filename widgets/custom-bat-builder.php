@@ -45,7 +45,7 @@ class Custom_Bat_Builder extends \Elementor\Widget_Base
 
         <div class="search">
             <div class="my_dropdown">
-                <form id="search-device-result">
+                <form id="search-device-result"  ajax_url="<?php echo admin_url('admin-ajax.php'); ?>">
                     <section style="margin-bottom: 40px;">
                         <label for="size" class="custom-size">Required:</label> <br>
 
