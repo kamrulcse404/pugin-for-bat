@@ -58,3 +58,9 @@ select.custom-size-option option {
     font-weight: 400;
     margin-bottom: 20px;
 }
+
+
+.show_product img {
+    width: 200px;
+    height: auto;
+}
